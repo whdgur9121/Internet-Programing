@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<p id="here">hello <span>there</span></p>
+<div id="main">
+    <a href="somewhere.html"><img src="whatever.gif" class="thumb"></a>
+    <ul>
+    </ul>
+</div>
+<script>
+    const list = document.querySelector("#main ul");
+    // first approach, construct string with content first
+    let items = '';
+    for (let i = 0; i < 100; i++) {
+        items += '<li>Item ' + i + '</li>';
+    }
+    // then assign innerHTML to content
+    list.innerHTML = items;
+    // second approach, add content to innerHTML incrementally
+    list.innerHTML = '';
+    for (let i = 0; i < 100; i++) {
+        list.innerHTML += '<li>Item ' + i + '</li>';
+    }
+</script>
+
+
+<script> //스크립트 코드가 객체들의 접근을 위해 맨 아래 깔림(코드가 구현이 된 후 하기 위해서)
+    const node = document.getElementById("here"); // 
+    console.log(node.innerHTML); // outputs: hello there 태그 유지
+    console.log(node.textContent); //태그 제거(콘솔에서 확인 가능)
+    const items = document.getElementsByTagName("li"); //리스트 형태 : elements
+    for (let i = 0; i < items.length; i++) { // outputs: France, then Spain, then Thailand
+        console.log(items[i].textContent);
+    }
+    const link = document.querySelector("#main a"); // outputs: somewhere.html
+    console.log(link.href);
+    const img = document.querySelector("#main img"); // outputs: whatever.gif
+    console.log(img.src); // outputs: thumb
+    console.log(img.className);
+</script>
+
+
+
+
+
+</html>
